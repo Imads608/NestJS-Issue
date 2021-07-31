@@ -1,6 +1,10 @@
 # NestJS-Issue
 The issue being seen here is that NestJS doesn't generate the dist files correctly or take in the latest changes into account
 
+## Environment
+- Node Version: `14.8.0`
+- Nest Version: `8.0.2`
+- Running on MacOS Big Sur 11.4
 
 ## Reproduction Steps
 1. `cd` into the `api-gateway-nest` project
@@ -8,7 +12,7 @@ The issue being seen here is that NestJS doesn't generate the dist files correct
 3. Generate module `nest generate module auth`
 4. Generate controller `nest generate controller`
 5. Generate module `nest generate module common`
-6. In `auth.module.ts`, replace the contents with below:
+6. In `auth.controller.ts`, replace the contents with below:
 
 ```
 import { Controller, Logger, Post, Request, UseGuards, UseInterceptors } from '@nestjs/common';;
@@ -41,5 +45,5 @@ export class AuthController {
 7. Change the logging statement in `main.ts`
 Your changes shouldn't be reflected and if `dist` folder is deleted, the app won't be able to recreate all the files needed to start it back up.
 
-8. Delete the `common` and `auth` folders
+8. Delete the `common` and `auth` folders and remove the imports in `app.module.ts`
 9. Make another change to the logging statement in the `main.ts` file and your changes should be reflected
