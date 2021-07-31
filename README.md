@@ -8,11 +8,19 @@ The issue being seen here is that NestJS doesn't generate the dist files correct
 
 ## Reproduction Steps
 1. `cd` into the `api-gateway-nest` project
-2. Start the app `nest start --watch`
-3. Generate module `nest generate module auth`
-4. Generate controller `nest generate controller`
-5. Generate module `nest generate module common`
-6. In `auth.controller.ts`, replace the contents with below:
+2. Install dependencies `npm install`
+3. Create `.env` file with contents
+```
+APPLICATION_PORT=3015
+USER_MICROSERVICE_PORT=3012
+AUTH_MICROSERVICE_PORT=3011
+```
+
+5. Start the app `nest start --watch`
+6. Generate module `nest generate module auth`
+7. Generate controller `nest generate controller`
+8. Generate module `nest generate module common`
+9. In `auth.controller.ts`, replace the contents with below:
 
 ```
 import { Controller, Logger, Post, Request, UseGuards, UseInterceptors } from '@nestjs/common';;
